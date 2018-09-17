@@ -28,13 +28,19 @@
     <span>SVG with typescript rendering.</span>
   </mat-toolbar-row>
 
+ <mat-toolbar-row (click)="navigate('svg-optimise-1')">
+    <mat-icon class="example-icon">school</mat-icon>
+    <span class="example-spacer"></span>
+    <span>SVG optimised - 2d string array.</span>
+  </mat-toolbar-row>
+
   </mat-toolbar>
   </div>
   </mat-sidenav>
   <mat-sidenav-content>
   <div class="topNav">
     <div>
-      <button [ngClass]="{'open': opened, 'closed': !opened}" (click)="sidenav.toggle(); opened=!opened"><mat-icon class="example-icon">menu</mat-icon></button>
+      <button (click)="sidenav.toggle()"><mat-icon class="example-icon">menu</mat-icon></button>
     </div>
     <div>
       <h1>AG</h1>
@@ -84,7 +90,7 @@
         </form>
     </div>
     <div class="transitions" [@animRoutes]="animationState">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
   </div>
 </div>

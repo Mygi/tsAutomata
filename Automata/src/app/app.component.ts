@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { MosaicConfigService } from './mosaic/services/mosaic-config.service';
 import { AutomataConfig } from './contracts/automata-config';
 import { trigger, state, transition, group, style, animate, query } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 const left = [
   query(':enter, :leave', style({ position: 'fixed', width: '80%' }), { optional: true }),
   group([
@@ -52,8 +52,10 @@ export class AppComponent {
   public numRows = 10;
   public color: string;
   public triggerUpdate = new BehaviorSubject<boolean>(false);
+  animationState: number;
 
-  constructor(private _configService: MosaicConfigService, private _router: Router ) { }
+
+  constructor(private _configService: MosaicConfigService, private _router: Router, private route: ActivatedRoute ) { }
 
   public options = new FormGroup({
     rows: new FormControl(this.numRows),
@@ -83,5 +85,9 @@ export class AppComponent {
   }
   navigate(item: string) {
       this._router.navigate([item]);
+  }
+  onActivate($event) {
+    this.animationState = this.route.firstChild.snapshot.data['routeIdx'];
+    window.scrollTo(0, 0);
   }
 }

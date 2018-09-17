@@ -14,7 +14,7 @@ export class SvgTsCheckerboardComponent extends AutomataComponent implements OnI
    */
   @ViewChild('mySvg') svg;
 
-  constructor(protected _mosaicService: AutomataBuilder, protected _configService: MosaicConfigService, private _renderer: Renderer2) {
+  constructor(protected _mosaicService: AutomataBuilder, protected _configService: MosaicConfigService, protected _renderer: Renderer2) {
     super(_mosaicService);
     this.offColor = '#470403';
   }
@@ -48,7 +48,7 @@ export class SvgTsCheckerboardComponent extends AutomataComponent implements OnI
 
   }
 
-  private createSvgRectangle(x: number, y: number, width: number, height: number, color: string): any {
+  protected createSvgRectangle(x: number, y: number, width: number, height: number, color: string): any {
     const child = this._renderer.createElement('rect', 'svg');
     this._renderer.setAttribute(child, 'style', 'width:' + width + 'px; height: ' + height + 'px; fill: ' + color + ';');
     this._renderer.setAttribute(child, 'class', 'column');

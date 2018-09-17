@@ -1,0 +1,28 @@
+<h2> Using SVG, Typescript driven, Simple 2D Array  </h2>
+<ul>
+<li>
+  In this case we continue to generate an svg via Typescript and Angular's Renderer2.
+</li>
+<li>
+  Out Data Model is now a simple Array of string[][] - with row/column indicies being implicit.
+</li>
+<li>
+  Also Dropped the service reference for building the checkerboard
+</li>
+<li>
+  Still used class inheritance but build directky to view. No model!
+
+</li>
+<li>
+  Chrome: 400x400 will give us a delay of 4-5 seconds and a total memory usage of 154MB - an increase of 80MB specifically for the rendering.
+</li>
+<li>
+  Chrome: 500x500 will give us a delay of ~15 seconds and a total memory usage of 311MB - an increase of 150MB specifically for the rendering.
+</li>
+</ul>
+ <button (click)="drawSvg()" mat-raised-button color="primary">Draw Checkerboard
+        <small></small>
+      </button>
+<div class="mosaicPixels" id="svgItem" #mySvg >
+    
+</div>
