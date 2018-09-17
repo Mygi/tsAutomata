@@ -19,13 +19,14 @@ So I wondered how performance of tiling would be affected by various layers of a
 This project started to grow as I thought of different potential optimisations. I am now migrating all my solutions into a single project. 
 
 The variables that I could change for each solution would include:
-1. Html Rendering ( svg vs canvas vs html element
+1. Html Rendering ( svg vs canvas vs html element )
 2. Data Model (Object Array, 2D Array, 1D strided Array, HTML5 Byte based arrays like Int32Array)
 3. System Design ( modular with separation of concerns and dependency injection, flattened component, flat javascript)
-4. 2D rendering Libraries ([pixijs](http://www.pixijs.com/), [twojs](https://two.js.org/), [snap svg](http://snapsvg.io/) and [paperjs](http://paperjs.org/examples/q-bertify/)
+4. 2D rendering Libraries ([pixijs](http://www.pixijs.com/), [twojs](https://two.js.org/), [snap svg](http://snapsvg.io/) and [paperjs](http://paperjs.org/examples/q-bertify/) )
 5. Browser ( Firefox vs Chrome as not all features of this test are supported by other browsers, plus developer tools provide better access to memory interrogation)
 6. As a final test - I want to be able to test the same code between js frameworks (especially React vs Angular vs Vue) - but this is a nice-to-have at this stage.
-7. Shape Of Tiling Canvas (I suspect that squares will work better than rectangles in some cases). Also a nice-to-have
+7. Shape Of Tiling Canvas (I suspect that squares will work better than rectangles in some cases). Also a nice-to-have at this stage.
+
 
 ## Testing
 There are several metrics we can pick up from these tests. The most interesting for me are:
