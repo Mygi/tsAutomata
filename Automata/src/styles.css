@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+div.mosaic, div.mosaicPixels {
+    margin-top: 20px;
+}
+
+div.row {
+    display: table-row;    
+}
+div.column {
+    display: table-cell;
+}
+div.pageSetup {
+    margin-left: 100px;
+    margin-top: 20px;
+    min-width: 800px;
+    
+}
+div.colorSelecter {
+    margin-top: 20px;
+}
+.mat-radio-button { 
+    display: block !important;
+}
+.mat-sidenav {
+    min-width: 391px;
+}
+.page-border {
+    font-family: 'Lato', sans-serif;
+}
+.transitions {
+    min-height:500px;
+}
+.mat-drawer {
+    background: White;
+}
+.container {
+    height:100%;
+    margin: 0;
+}
+body {
+    margin: 0;
+}
+div.menu {
+    margin-right: 0px;
+    margin-left: 0px;
+    font-family: 'Lato', sans-serif;
+}
+ div.menu  h3 {
+        margin-left: 20px;
+}
+div.menu .example-spacer {
+        width:10px;
+}
+div.menu .mat-toolbar-row:hover {
+    background: #EEE;
+}
+
+div.menu .mat-icon {
+        color: #EC008B;
+}
+
+.mat-toolbar-row {
+    font-size: 14px;
+    font-weight: normal;
+}

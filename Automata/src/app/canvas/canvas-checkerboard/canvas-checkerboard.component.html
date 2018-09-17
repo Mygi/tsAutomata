@@ -1,0 +1,9 @@
+<h2> Using Canvas - Naive Model </h2>
+<h4> This approach uses an html 2D canvas. </h4>
+  <button mat-raised-button  (click)="drawCanvas()" color="primary" class="primary">Draw Checkerboard
+        <small></small>
+      </button>
+      
+<div class="mosaicPixels">
+    <canvas (click)="updateCanvas($event.layerX, $event.layerY)" #myCanvas [attr.height]="columnHeight*numRows" [attr.width]="columnWidth*numColumns" style="background:lightgray;"></canvas>
+</div>

@@ -1,0 +1,12 @@
+<h2> Using SVG and template driven </h2>
+<h4> This approach uses svg with rect objects. NB: Naive model</h4>
+ <button (click)="drawMosaic()" mat-raised-button color="primary">Draw Checkerboard
+        <small></small>
+      </button>
+<div class="mosaicPixels">
+  <svg [attr.height]="columnHeight*numRows" [attr.width]="columnWidth*numColumns">
+  <ng-container *ngFor="let row of mosaic.nodes">
+    <rect *ngFor="let column of row" (click)="setPixelColour(column.tileColumnId, column.tileRowId)" [attr.width]="columnWidth" [attr.height]="columnHeight" [attr.fill]="column.colour" [attr.x]="column.tileColumnId*columnWidth" [attr.y]="column.tileRowId*columnHeight"/>
+  </ng-container>
+  </svg>
+</div>

@@ -1,0 +1,15 @@
+<h2> Using Native html elements </h2>
+<h4> This approach uses divs with background colours and css layouts. </h4>
+ <button mat-raised-button (click)="drawMosaic()" mat-raised-button color="primary">Draw Checkerboard
+        <small></small>
+      </button>
+<div class="mosaic">
+  <div class="row" *ngFor="let row of mosaic.nodes" [ngStyle]="{'line-height.px': columnHeight}">
+    <div class="column" *ngFor="let column of row" (mouse)="callMe(column.tileColumnId, column.tileRowId)" (click)="setPixelColour(column.tileColumnId, column.tileRowId)" [ngStyle]="{'background': column.colour, 'width.px': column.pixelWidth, 'height.px': column.pixelHeight }" >
+    
+    <!-- use the built-in renderer-->
+    &nbsp;
+    </div>
+  </div>
+    
+</div>

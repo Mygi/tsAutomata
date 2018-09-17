@@ -1,0 +1,92 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="push" [fixedInViewport]="true">
+  <div class="menu">
+  <h3> Tiling Solutions </h3>
+  <mat-toolbar>
+
+   <mat-toolbar-row (click)="navigate('native-element')">
+    <mat-icon class="example-icon">school</mat-icon>
+    <span class="example-spacer"></span>
+    <span>Html element for tile - template driven. Naive implementation</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row (click)="navigate('svg-simple')">
+    <mat-icon class="example-icon">school</mat-icon>
+    <span class="example-spacer"></span>
+    <span>SVG Image, rect for tile - template driven. Naive implementation</span>
+  </mat-toolbar-row>
+
+   <mat-toolbar-row (click)="navigate('cnavas')">
+    <mat-icon class="example-icon">school</mat-icon>
+    <span class="example-spacer"></span>
+    <span>Html Canvas. Draw rectangle for tile</span>
+  </mat-toolbar-row>
+
+   <mat-toolbar-row (click)="navigate('svg-ts')">
+    <mat-icon class="example-icon">school</mat-icon>
+    <span class="example-spacer"></span>
+    <span>SVG with typescript rendering.</span>
+  </mat-toolbar-row>
+
+  </mat-toolbar>
+  </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+  <div class="topNav">
+    <div>
+      <button [ngClass]="{'open': opened, 'closed': !opened}" (click)="sidenav.toggle(); opened=!opened"><mat-icon class="example-icon">menu</mat-icon></button>
+    </div>
+    <div>
+      <h1>AG</h1>
+    </div>
+    <div class="vitaeTitle">
+      <h2>Variations on Tiling</h2>
+    </div>
+    
+    <div class="icon">
+      <mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon>
+      <mat-icon fontSet="fab" fontIcon="fa-linkedin"></mat-icon>
+    </div>
+</div>
+<div class="page-border">
+  <div class="pageSetup">
+    <div class="solutions">
+      <h2>Building a checkerboard</h2>
+       <ol>
+       <li>Select an approach from the side menu</li>
+       <li>Choose your tiling parameters</li>
+       <li>Generate a checkerboard</li>
+       <li>Click on a tile in the checkerboard to paint</li>
+       <li>See how large / dense a checkerboard you can make. Memory consumption and max limits are reported for each approach</li>
+      </ol>
+    </div>
+    <div class="options">
+      <form class="example-container" [formGroup]="options">
+        <h2>Input Parameters</h2>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Number of Rows" formControlName="rows" min="8" (change)="updateAutomata()">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Number of Columns" formControlName="columns" min="8" (change)="updateAutomata()">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Pixels per Row" formControlName="rowPixels" min="8" (change)="updateAutomata()">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Pixels per Column" formControlName="columnPixels" min="8" (change)="updateAutomata()">
+          </mat-form-field>
+
+          <mcc-color-picker (change)="updateAutomata()" mccConnectedColorPicker [mccConnectedColorPickerOrigin]="trigger" >
+          </mcc-color-picker>
+            <mat-form-field>
+              <input matInput (change)="updateAutomata()" placeholder="Paint Color" mccColorPickerOrigin #trigger="mccColorPickerOrigin" formControlName="color" />
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="transitions" [@animRoutes]="animationState">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
