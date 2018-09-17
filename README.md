@@ -15,6 +15,8 @@ However, in javascript, you don't have access to parts of the computer hardware 
 
 So I wondered how performance of tiling would be affected by various layers of abstraction on the browser. As I write in Angular, I was especially curious how the Angular compiler would optimise my code for production. 
 
+NB: I won't be using web workers at the start due to but I will look at using them for optimising canvas and possibly SVG rendering.
+
 ## Solutions
 This project started to grow as I thought of different potential optimisations. I am now migrating all my solutions into a single project. 
 
