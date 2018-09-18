@@ -22,6 +22,7 @@ export class SvgTsCheckerboardComponent extends AutomataComponent implements OnI
   ngOnInit(): void {
     this._configService.getConfig().subscribe(config => {
       this.processConfig(config);
+      this.offColor = config.paintColour;
     });
   }
   public drawSvg() {

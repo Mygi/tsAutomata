@@ -20,6 +20,7 @@ export class NativeCheckerboardComponent extends AutomataComponent implements On
   ngOnInit(): void {
     this._configService.getConfig().subscribe(config => {
       this.processConfig(config);
+      this.offColor = config.paintColour;
     });
   }
 

@@ -1,0 +1,33 @@
+<h2> Using Canvas - Optimised with no Model </h2>
+<ul>
+<li>
+  In this case we continue to generate a canvas via Typescript.
+</li>
+<li>
+  No Model - direct from loop to render
+</li>
+
+<li>
+  Still used class inheritance.
+</li>
+<li>
+  Chrome: 1920*1200 will give us a delay of ~4 seconds on production and a total memory usage of 47MB - Obvisouly the grahics card is taking care of this. 
+</li>
+<li>
+  Chrome:: Rendering 4K resolution on dev of 3840 x 2160 will take around 15 seconds. One could optimise by not rendering the white space. Going from HD to 4K only adds another 0.5 MB of memory.
+</li>
+<li>
+  
+</li>
+<li> At this point there is no model and optimisations would center around parallel and/or buffered rendering and using web workers.   </li>
+<li>
+  source: <a href="https://github.com/Mygi/tsAutomata/blob/master/Automata/src/app/svg/components/svg2-dsimple-array/svg2-dsimple-array.component.ts">available here </a>
+</li>
+</ul>
+  <button mat-raised-button  (click)="drawCanvas()" color="primary" class="primary">Draw Checkerboard
+        <small></small>
+      </button>
+      
+<div class="mosaicPixels">
+    <canvas (click)="updateCanvas($event.layerX, $event.layerY)" #myCanvas [attr.height]="columnHeight*numRows" [attr.width]="columnWidth*numColumns" style="background:lightgray;"></canvas>
+</div>

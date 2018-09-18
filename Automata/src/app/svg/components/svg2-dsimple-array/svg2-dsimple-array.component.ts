@@ -1,7 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { AutomataComponent } from '../../../contracts/automata-component';
-import { AutomataBuilder } from '../../../contracts/automata-builder';
-import { MosaicConfigService } from '../../../mosaic/services/mosaic-config.service';
+import { Component, ViewChild } from '@angular/core';
 import { SvgTsCheckerboardComponent } from '../svg-ts-checkerboard/svg-ts-checkerboard.component';
 
 @Component({
@@ -31,9 +28,7 @@ export class Svg2DSimpleArrayComponent extends SvgTsCheckerboardComponent {
       event.srcElement.style.fill = this.color;
     });
 
-    const output: string[][] = [];
     for (let j = 0; j < this.numRows; j++) {
-      output[j] = [];
       for (let i = 0; i < this.numColumns; i++) {
         // create Column
         this._renderer.appendChild(svg, this.createSvgRectangle(i * this.columnWidth, j * this.columnHeight,

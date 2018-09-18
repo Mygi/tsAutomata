@@ -4,7 +4,7 @@
   In this case we continue to generate an svg via Typescript and Angular's Renderer2.
 </li>
 <li>
-  Out Data Model is now a simple Array of string[][] - with row/column indicies being implicit.
+  Now the model has been removed and we render directly from our loop
 </li>
 <li>
   Also Dropped the service reference for building the checkerboard
@@ -18,6 +18,16 @@
 </li>
 <li>
   Chrome: 500x500 will give us a delay of ~15 seconds and a total memory usage of 311MB - an increase of 150MB specifically for the rendering.
+</li>
+<li>
+  This is already an increase of 300% on development configuration alone!
+</li>
+<li>
+  This drops significantly on production settings - to ~ 64MB in total and 30MB in rendering. There is no huge improvement in rendering performance time as it still takes ~15-20seconds to load.
+</li>
+<li> At this point there is no model and optimisations would center around parallel and/or buffered rendering and using wew borkers.   </li>
+<li>
+  source: <a href="https://github.com/Mygi/tsAutomata/blob/master/Automata/src/app/svg/components/svg2-dsimple-array/svg2-dsimple-array.component.ts">available here </a>
 </li>
 </ul>
  <button (click)="drawSvg()" mat-raised-button color="primary">Draw Checkerboard

@@ -18,6 +18,7 @@ export class SvgCheckerboardComponent extends AutomataComponent implements OnIni
   ngOnInit(): void {
     this._configService.getConfig().subscribe(config => {
       this.processConfig(config);
+      this.offColor = config.paintColour;
     });
   }
   public setPixelColour(x: number, y: number) {

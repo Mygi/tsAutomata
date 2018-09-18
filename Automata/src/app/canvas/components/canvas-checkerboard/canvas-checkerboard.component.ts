@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { AutomataComponent } from '../../contracts/automata-component';
-import { AutomataBuilder } from '../../contracts/automata-builder';
-import { MosaicConfigService } from '../../mosaic/services/mosaic-config.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AutomataComponent } from '../../../contracts/automata-component';
+import { AutomataBuilder } from '../../../contracts/automata-builder';
+import { MosaicConfigService } from '../../../mosaic/services/mosaic-config.service';
 
 @Component({
   selector: 'app-canvas-checkerboard',
@@ -21,6 +21,7 @@ export class CanvasCheckerboardComponent extends AutomataComponent implements On
   ngOnInit(): void {
     this._configService.getConfig().subscribe(config => {
       this.processConfig(config);
+      this.offColor = config.paintColour;
     });
   }
 
