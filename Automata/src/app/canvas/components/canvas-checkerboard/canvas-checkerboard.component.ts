@@ -6,7 +6,7 @@ import { MosaicConfigService } from '../../../mosaic/services/mosaic-config.serv
 @Component({
   selector: 'app-canvas-checkerboard',
   templateUrl: './canvas-checkerboard.component.html',
-  styleUrls: ['./canvas-checkerboard.component.css']
+  styleUrls: []
 })
 export class CanvasCheckerboardComponent extends AutomataComponent implements OnInit {
 

@@ -5,6 +5,7 @@ import { Mosaic } from '../models/mosaic.model';
 import { AutomataBuilder } from '../../contracts/automata-builder';
 import { Automata } from '../../contracts/automata';
 import { AutomataConfig } from '../../contracts/automata-config';
+import { AutomataNode } from '../../contracts/node';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,14 @@ export class MosaicService extends AutomataBuilder {
     console.log( this._numRows );
     return this._mosaic;
   }
+  public addNode(x: number, y: number, tile: AutomataNode): void {
+    if ( this._mosaic.nodes[y] !== undefined ) {
+      this._mosaic.nodes[y][x] = tile as Tile;
+    } else {
+      this._mosaic.nodes[y] = [];
+      this._mosaic.nodes[y][x] = tile as Tile;
+    }
+  }
   /**
    *Set the pixel color in the model
    *
@@ -53,6 +62,9 @@ export class MosaicService extends AutomataBuilder {
    */
   public setColor(color: string, x: number, y: number) {
     this._mosaic.nodes[y][x].colour = color;
+  }
+  public getMosaic(): Automata {
+     return this._mosaic;
   }
 }
 
