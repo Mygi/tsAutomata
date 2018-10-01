@@ -56,24 +56,21 @@ export class CanvasAutomataComponent extends AutomataComponent implements OnInit
     }
   }
 
-  private updateState() {
+  public updateState() {
     const ctx = this.context;
     // optional remove
     console.log( ' here' );
     ctx.clearRect(0, 0, this.columnWidth * this.numColumns, this.columnHeight * this.numRows);
     for (let j = 0; j < this.numRows; j++) {
       for (let i = 0; i < this.numColumns; i++) {
-        const node = this._mosaicService.getMosaic().nodes[i][j];
+        const node = this._mosaicService.getMosaic().nodes[j][i];
         // create Column 1/x influence
-        console.log(this._mosaicService.getMosaic().nodes[i][j]);
-        console.log(this._mosaicService.getMosaic().nodes[i][j].colour);
         const oldColour = this.hexToRgb(node.colour);
-         console.log(oldColour);
         const influence = this.getNeighbours( i, j );
-        console.log(influence);
-        const deltaR = oldColour.r > influence.r ?  ((oldColour.r - influence.r) / 2) : ((oldColour.r - influence.r) / 2);
-        const deltaG = oldColour.g > influence.g ? ((oldColour.g - influence.g) / 2) : ((oldColour.g - influence.g) / 2);
-        const deltaB = oldColour.b > influence.b ?  ((oldColour.b - influence.b) / 2) : ((oldColour.b - influence.b) / 2);
+        console.log(influence, oldColour);
+        const deltaR = oldColour.r > influence.r ? ((oldColour.r - influence.r) / 4) : ((influence.r - oldColour.r) / 4);
+        const deltaG = oldColour.g > influence.g ? ((oldColour.g - influence.g) / 4) : ((influence.g - oldColour.g) / 4);
+        const deltaB = oldColour.b > influence.b ? ((oldColour.b - influence.b) / 4) : ((influence.b - oldColour.b) / 4);
 
         const newR = deltaR + oldColour.r < 0 ? 0 : deltaR + oldColour.r;
         const newG = deltaG + oldColour.g < 0 ? 0 : deltaG + oldColour.g;
@@ -99,14 +96,20 @@ export class CanvasAutomataComponent extends AutomataComponent implements OnInit
     const mosaic = this._mosaicService.getMosaic();
     const neighbourColours: string[] = [];
     for ( let i = x - 1; i < x + 2; i++ ) {
-      for ( let j = y - 1; j < y + 2; j ++ ) {
+      for ( let j = y - 1; j < y + 2; j++ ) {
         if ( i >= 0 && j >= 0 ) {
           if (mosaic.nodes[j] !== undefined && mosaic.nodes[j][i] !== undefined ) {
-            neighbourColours.push(mosaic.nodes[j][i].colour);
+            console.log(i, j);
+            if ( i === x && j === y) {
+              continue;
+            } else {
+              neighbourColours.push(mosaic.nodes[j][i].colour);
+            }
           }
         }
       }
     }
+    console.log(x, y, neighbourColours);
     return this.aggregateInfluence(neighbourColours);
   }
 
@@ -115,7 +118,6 @@ export class CanvasAutomataComponent extends AutomataComponent implements OnInit
     const rAverage = { r: 0, g: 0, b: 0 };
     hexColours.forEach( colour => {
       const rgb = this.hexToRgb(colour);
-      console.log( colour );
       rTotal.r += rgb.r;
       rTotal.b += rgb.b;
       rTotal.g += rgb.g;
@@ -142,23 +144,25 @@ export class CanvasAutomataComponent extends AutomataComponent implements OnInit
     return '#' + Math.random().toString(16).slice(-6);
   }
   updateCanvas(x, y) {
-    // const canvas = this.myCanvas.nativeElement;
-    // this.context = canvas.getContext('2d');
+    const canvas = this.myCanvas.nativeElement;
+    this.context = canvas.getContext('2d');
 
-    // const ctx = this.context;
-    // console.log( this.color );
-    // ctx.fillStyle = this.color;
+    const ctx = this.context;
+    console.log( this.color );
+    ctx.fillStyle = this.color;
 
-    // const col = Math.floor(x / this.columnWidth);
-    // const row = Math.floor(y / this.columnHeight);
-    // const tmpX = (col * this.columnWidth) + Math.floor((col + this.columnWidth) / 2);
-    // const tmpY = (row * this.columnWidth) + Math.floor((row + this.columnWidth) / 2);
-    // console.log( tmpX, tmpY );
+    const col = Math.floor(x / this.columnWidth);
+    const row = Math.floor(y / this.columnHeight);
+    const node = this._mosaicService.getMosaic().nodes[row][col];
+    node.colour = this.color;
+    const tmpX = (col * this.columnWidth) + Math.floor((col + this.columnWidth) / 2);
+    const tmpY = (row * this.columnWidth) + Math.floor((row + this.columnWidth) / 2);
+    console.log( tmpX, tmpY );
 
-    // ctx.beginPath();
-    // ctx.arc(tmpX, tmpY, (this.columnWidth / 2) - 4, 0, 2 * Math.PI, false);
-    // ctx.fill();
-    this.updateState();
+    ctx.beginPath();
+    ctx.arc(tmpX, tmpY, (this.columnWidth / 2) - 4, 0, 2 * Math.PI, false);
+    ctx.fill();
+    // this.updateState();
   }
 
 }

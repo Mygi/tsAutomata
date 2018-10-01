@@ -3,6 +3,9 @@
   <button mat-raised-button  (click)="drawCanvas()" color="primary" class="primary">Draw Checkerboard
         <small></small>
       </button>
+  <button mat-raised-button  (click)="updateState()" color="primary" class="primary">Update State
+        <small></small>
+      </button>
       
 <div class="mosaicPixels">
     <canvas (click)="updateCanvas($event.layerX, $event.layerY)" #myCanvas [attr.height]="columnHeight*numRows" [attr.width]="columnWidth*numColumns" style="background:White;"></canvas>
