@@ -1,5 +1,5 @@
 # tsAutomata
-Some thought on Tiling and automata on the web
+Some thoughts on Tiling and automata on the web
 
 ## Concept
 I had an interview the other day where I was asked to write a tiling function for the web. In the heat of the moment, I came up with a rudementary solution. After leaving the interview, I started to think how I would ideally implement the solution. As I dug deeper, the problem became more and more interesting. So I created an angular project to test out a couple of ideas.
