@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MccColorPickerModule } from 'material-community-components';
+import { MccColorPickerModule} from 'material-community-components/color-picker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MosaicService } from './mosaic/services/mosaic.service';
 import { AppRoutingModule } from './app.routes';
