@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NativeCheckerboardComponent } from './native-checkerboard.component';
 
@@ -6,7 +6,7 @@ describe('NativeCheckerboardComponent', () => {
   let component: NativeCheckerboardComponent;
   let fixture: ComponentFixture<NativeCheckerboardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NativeCheckerboardComponent ]
     })

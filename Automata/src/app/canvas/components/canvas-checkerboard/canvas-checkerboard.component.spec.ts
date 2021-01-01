@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CanvasCheckerboardComponent } from './canvas-checkerboard.component';
 
@@ -6,7 +6,7 @@ describe('CanvasCheckerboardComponent', () => {
   let component: CanvasCheckerboardComponent;
   let fixture: ComponentFixture<CanvasCheckerboardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CanvasCheckerboardComponent ]
     })

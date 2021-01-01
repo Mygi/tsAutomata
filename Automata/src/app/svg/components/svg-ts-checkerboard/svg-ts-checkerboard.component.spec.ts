@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SvgTsCheckerboardComponent } from './svg-ts-checkerboard.component';
 
@@ -6,7 +6,7 @@ describe('SvgTsCheckerboardComponent', () => {
   let component: SvgTsCheckerboardComponent;
   let fixture: ComponentFixture<SvgTsCheckerboardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SvgTsCheckerboardComponent ]
     })

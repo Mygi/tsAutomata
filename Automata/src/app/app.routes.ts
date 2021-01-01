@@ -29,7 +29,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes), MosaicModule, SvgModule, CanvasModule, NativeElementModule],
+    imports: [RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' }), MosaicModule, SvgModule, CanvasModule, NativeElementModule],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
